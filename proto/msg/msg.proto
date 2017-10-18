@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+package msg;
+
+message GetMsgRequest {
+    string sz_id = 1;
+    int32 page_number = 2;
+    int32 result_per_page = 3;
+}
+
+message Msg {
+    string sz_id = 1;
+    string title = 2;
+    string content = 3;
+    string status = 4;
+}
+
+message MsgList {
+    int32 page_total = 1;
+    repeated Msg msg_list = 2;
+}
+
+service MsgService {
+    rpc GetMsg (GetMsgRequest) returns (MsgList) {}
+    rpc AddMsg (Msg) returns (Msg) {}
+}
+
+// gPRC-getway Test
+service MsgApiService {
+    rpc GetMsgApi (GetMsgRequest) returns (MsgList) {
+        option (google.api.http) = {
+            post: "/v1/getMsgApi"
+            body: "*"
+        };
+    }
+    rpc addMsgApi (Msg) returns (Msg) {
+            option (google.api.http) = {
+                post: "/v1/addMsgApi"
+                body: "*"
+            };
+        }
+}

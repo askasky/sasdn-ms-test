@@ -1,0 +1,121 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "msg/msg.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/addMsgApi": {
+      "post": {
+        "operationId": "addMsgApi",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/msgMsg"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/msgMsg"
+            }
+          }
+        ],
+        "tags": [
+          "MsgApiService"
+        ]
+      }
+    },
+    "/v1/getMsgApi": {
+      "post": {
+        "operationId": "GetMsgApi",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/msgMsgList"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/msgGetMsgRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MsgApiService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "msgGetMsgRequest": {
+      "type": "object",
+      "properties": {
+        "sz_id": {
+          "type": "string"
+        },
+        "page_number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "result_per_page": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "msgMsg": {
+      "type": "object",
+      "properties": {
+        "sz_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "msgMsgList": {
+      "type": "object",
+      "properties": {
+        "page_total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/msgMsg"
+          }
+        }
+      }
+    }
+  }
+}

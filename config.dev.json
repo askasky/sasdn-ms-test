@@ -1,0 +1,22 @@
+ {
+   "name": "msg",
+   "host": "0.0.0.0",
+   "port": 9093,
+   "tracer": false,
+   "driver":{"msg": "relation", "other": ""},
+   "database": {
+     "relation":[
+       {
+         "skip": false,
+         "name": "msg_0",
+         "type": "mysql",
+         "host": "172.16.0.104",
+         "port": 3306,
+         "username": "php",
+         "password": "shinezone2008",
+         "database": "msg_0",
+         "synchronize": true
+       }
+     ]
+   }
+ }
